@@ -34,6 +34,9 @@ titles_from_headings:
   strip_title: true
   collections: true
 
+minima:
+  skin: solarized
+
 defaults:
   - scope:
       path: ""
