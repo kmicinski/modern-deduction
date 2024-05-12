@@ -1,5 +1,7 @@
 title: "Modern Deduction"
 author: "Kristopher Micinski"
+url: "https://kmicinski.com"        # the base hostname & protocol for your site
+baseurl: "/modern-deduction"        # the subpath of your site, e.g., /blog
 #baseurl: "https://kmicinski.com/modern-deduction"
 description: "The Modern Deduction Blog: Datalog, Program Analysis, etc... Thanks to US National Science Foundation (PPoSS CCF-2316159 and -2217037)" 
 # Email / Social media user names used by the minima theme:
