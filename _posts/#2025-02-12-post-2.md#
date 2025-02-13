@@ -1,0 +1,52 @@
+## Post 2: NSF PPoSS Status Update--2024 Year in Review
+
+In this post I'll explain our group's published progress from 2024. 
+For the past few years, we've been working on a vision:
+design the highest-performance declarative programming languages for 
+complex logical reasoning tasks. The applications of our systems span many domains including program analysis (e.g., DOOP), security (e.g., ddisasm), graph and social-media mining, knowledge representation, business analytics (e.g., RDFox), and medical reasoning (e.g., MediKanren). The applications 
+are united by their need to combine complex logical specifications with scalability on leadership-class systems (supercomputers, GPU clusters, datacenter GPUs, etc...). During 2024, our group--funded by NSF--had papers 
+accepted at several top conferences detailing our work on state-of-the-art 
+Datalog engines on GPUs (accepted at ASPLOS '25 AAAI '25) and supercomputers (accepted at VLDB '25).
+
+We started by a motivation in context-sensitive program analysis: while an input program might be tens of thousands of lines, analyzing it in a sufficiently sound and precise manner might demand the enumeration of billions of analysis states. Additionally, program analysis systems are 
+extremely complex, both in their specification but also implementation. 
+My collaborators and I spent years designing ad-hoc implementations 
+of sound program analysis algorithms, often disappointed that our 
+ad-hoc implementations lagged state-of-the-art systems by orders of magnitude. We realized that if we were to scale context-sensitive 
+program analyses to real codebases, we would need experience 
+in implementing our analyses using the fastest and most scalable tools 
+available. After experimenting with many of the popular state-of-the-art 
+engines, we realized that there were still practical 
+and theoretical limitations that prevented us from immediately applying 
+them to design high-performance program analysis systems.
+
+Of course there are many different concerns here: how does this relate 
+to traditional persistent databases, how do you deal with hierarchies 
+of different storage and computation capacities, what trade-offs do you 
+make surrounding error-correction, etc. For now, we
+try to make things as simple as possible on ourselves, getting things to 
+work in-memory (VRAM, RAM, etc...) and taking a materialization-based 
+strategy. A big focus of ours has been scaling large Datalog benchmarks, 
+including traditional graph algorithms (transitive closure, same generation), along with more practical program analysis workloads (context-sensitive points-to analysis of Linux, etc...). In pursuit of this, our students (and us too!) have built an exciting array of open-source engines demonstrating specific choices in pursuit of this goal.
+
+
+# Optimizing Datalog for the GPU (ASPLOS '25)
+
+The first in this line of work is set to appear at ASPLOS '25, and details 
+the design of the first truly SOTA GPU Datalog solver. While there was 
+substantial prior work in advancing Datalog on the GPU, there were no 
+general-purpose libraries which allowed realistically-sized Datalog 
+programs and were truly competitive with just using the CPU. Since the 
+GPU is burning energy--and because it's got a huge memory bandwidth 
+advantage--you would really expect that the GPU could crush the CPU 
+on truly high-scale workloads.
+
+Yihao led the development of this work, developing a data structure called 
+the Hash-Indexed Sorted Array (HISA). This GPU-based data structure is used to store relations in GPU VRAM. To be transparent: the whole computation is stored resident in GPU VRAM, which differentiates this work from prior work attempts to scale to potentially terrabytes of memory. 
+
+# Column-Oriented GPU Datalog (AAAI '25)
+
+# Datalog with First-Class Facts (VLDB '25)
+
+
+
